@@ -1,0 +1,1 @@
+quicksave api extension. python library callable from cpp api.
