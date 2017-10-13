@@ -3,6 +3,8 @@
 
 from PluginEngine import main
 from quicksave_pybeans.generated.QsBeans import InternalCreateRequestBean
+from quicksave_pybeans.pybeans import to_string
+
 
 def process(internalCreateRequestBean):
     return main(internalCreateRequestBean)
