@@ -1,3 +1,5 @@
+from quicksave_pybeans.pybeans import *
+
 import pika
 import env
 
