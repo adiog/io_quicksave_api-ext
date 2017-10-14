@@ -1,5 +1,5 @@
 import pika
-import env
+import quicksave_cli.env
 
 def rabbit_push(queue, bean):
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=env.IO_QUICKSAVE_MQ_HOST, port=env.IO_QUICKSAVE_MQ_PORT))
