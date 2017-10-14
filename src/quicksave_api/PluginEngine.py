@@ -8,7 +8,7 @@ import time
 
 from quicksave_pybeans.generated.QsBeans import TagBean, MetaBean, ItemBean, BackgroundTaskBean
 
-from rabbit_push import rabbit_push
+from quicksave_api.rabbit_push import rabbit_push
 
 
 def main(internalCreateRequestBean):
