@@ -13,6 +13,7 @@ class RabbitPusher(object):
         self.connection = pika.BlockingConnection(connection_parameters)
         self.channel = self.connection.channel()
         self.channel.queue_declare(queue=quicksave_api.env.REQUEST_QUEUE)
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.connection.close()
