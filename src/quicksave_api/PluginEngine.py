@@ -16,6 +16,10 @@ def main(internalCreateRequestBean):
     metaBean = createRequestBean.meta
     if metaBean.meta_type == 'image':
         rabbit_push('request', BackgroundTaskBean(name='image', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
+    if metaBean.meta_type == 'audio':
+        rabbit_push('request', BackgroundTaskBean(name='audio', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
+    if metaBean.meta_type == 'video':
+        rabbit_push('request', BackgroundTaskBean(name='video', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
     if metaBean.meta_type == 'page':
         rabbit_push('request', BackgroundTaskBean(name='thumbnail', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
         rabbit_push('request', BackgroundTaskBean(name='wget', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
@@ -25,7 +29,7 @@ def main(internalCreateRequestBean):
             rabbit_push('request', BackgroundTaskBean(name='youtube', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
         if 'github.com' in metaBean.source_url:
             rabbit_push('request', BackgroundTaskBean(name='git', internalCreateRequest=internalCreateRequestBean, kwargs='{}'))
-        if ('wikipedia' in metaBean.source_url):
+        if 'wikipedia' in metaBean.source_url:
             tags.append(TagBean(name='wiki'))
 
     item = ItemBean(meta=metaBean, tags=tags, files=[], actions=[])
