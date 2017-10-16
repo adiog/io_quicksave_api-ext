@@ -4,6 +4,8 @@
 import os
 
 
+REQUEST_QUEUE = os.environ.get('REQUEST_QUEUE', 'request')
+
 QUICKSAVE = os.environ.get('QUICKSAVE', '/io.quicksave.bootstrap')
 QUICKSAVE_PREFIX = os.environ.get('QUICKSAVE_PREFIX', '/')
 IO_QUICKSAVE = os.environ.get('IO_QUICKSAVE', 'quicksave.io')
