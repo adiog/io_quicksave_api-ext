@@ -25,11 +25,16 @@ def main(internal_create_request_bean):
             schedule_background_task(rabbit_pusher, 'thumbnail', internal_create_request_bean)
             schedule_background_task(rabbit_pusher, 'wget', internal_create_request_bean)
 
+        if meta_bean.meta_type == 'selection':
+            if meta_bean.text is not None:
+                if 'facebook.com' in meta_bean.text and 'videos' in meta_bean.text:
+                    schedule_background_task(rabbit_pusher, 'facebook:video', internal_create_request_bean)
+
         tags = [TagBean(name='python_sync')]
 
         if meta_bean.source_url is not None:
             if 'youtube.com' in meta_bean.source_url:
-                schedule_background_task(rabbit_pusher, 'youtube', internal_create_request_bean)
+                schedule_background_task(rabbit_pusher, 'youtube:video', internal_create_request_bean)
             if 'github.com' in meta_bean.source_url:
                 schedule_background_task(rabbit_pusher, 'git', internal_create_request_bean)
             if 'wikipedia' in meta_bean.source_url:
