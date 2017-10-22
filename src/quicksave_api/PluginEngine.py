@@ -30,6 +30,11 @@ def main(internal_create_request_bean):
                 if 'facebook.com' in meta_bean.text and 'videos' in meta_bean.text:
                     schedule_background_task(rabbit_pusher, 'facebook:video', internal_create_request_bean)
 
+        if meta_bean.meta_type == 'link':
+            if meta_bean.text is not None:
+                if '9gag.com/gag' in meta_bean.text:
+                    schedule_background_task(rabbit_pusher, '9gag', internal_create_request_bean)
+
         tags = [TagBean(name='python_sync')]
 
         if meta_bean.source_url is not None:
