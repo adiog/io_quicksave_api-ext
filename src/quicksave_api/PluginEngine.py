@@ -44,6 +44,8 @@ def main(internal_create_request_bean):
                 schedule_background_task(rabbit_pusher, 'git', internal_create_request_bean)
             if 'twitter.com' in meta_bean.source_url:
                 schedule_background_task(rabbit_pusher, 'twitter', internal_create_request_bean)
+            if 'vimeo.com' in meta_bean.source_url:
+                schedule_background_task(rabbit_pusher, 'vimeo', internal_create_request_bean)
             if 'wikipedia' in meta_bean.source_url:
                 tags.append(TagBean(name='wiki'))
 
